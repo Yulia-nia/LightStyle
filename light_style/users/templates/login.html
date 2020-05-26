@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block link %}
+    <link
+            rel="icon"
+            href="{% static 'img/iconname.ico' %}"
+            type="image/x-icon"
+    >
+    <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block app %}
+
+    <div class="py-5 container col-md-6 themed-grid-col rounded ">
+       <form class="form-signin">
+
+
+
+  <div class="form-label-group">
+    <label for="inputEmail">Email address</label>
+      <input type="text" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+
+  </div>
+
+  <div class="form-label-group">
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="inputPassword">Password</label>
+  </div>
+
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+    </div>
+
+{% endblock %}
