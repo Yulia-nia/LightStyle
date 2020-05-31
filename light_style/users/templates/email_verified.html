@@ -1,8 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
-
 {% block title %}
-    Login
+    Register
 {% endblock %}
 
 {% block link %}
@@ -18,13 +17,10 @@
 
 
 {% block app %}
-   <div class="card form container py-5 col-md-6 themed-grid-col rounded">
-        <h4>Регистрация</h4>
-          <form method="post" action="/login/">
-              {% csrf_token %}
-              {{ form }}
-              <input type="submit" placeholder="Отправить">
-          </form>
-   </div>
-
+    <div class="card">
+        <h2>
+            Email verified!
+        </h2>
+        Now your can use all of the site's functions
+    </div>
 {% endblock %}

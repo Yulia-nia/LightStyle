@@ -1,4 +1,7 @@
 from django import forms
+from django.contrib.auth import authenticate
+from django.contrib.auth.hashers import make_password
+
 from users.models import User
 
 
@@ -18,12 +21,13 @@ class RegistrationForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput()
         }
-        labels={
-            'email': "Address"
-        }
         help_texts= {
             'username': "Letters and digits only"
         }
+
+    def save(self, commit=True):
+        self.cleaned_data['password'] = make_password(self.cleaned_data['password'])
+        return super().save(self)
 
     def clean(self):
         password = self.cleaned_data['password']
@@ -45,3 +49,18 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError("Telephone should  contain ONLY digits")
 
         return telephone
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(
+        widget=forms.PasswordInput()
+    )
+
+    def get_user(self, request):
+        return authenticate(
+            request,
+            username=self.cleaned_data['username'],
+            password=self.cleaned_data['password']
+        )
+
