@@ -21,12 +21,12 @@ class RegistrationForm(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput()
         }
-        help_texts= {
+        help_texts = {
             'username': "Letters and digits only"
         }
 
     def save(self, commit=True):
-        self.cleaned_data['password'] = make_password(self.cleaned_data['password'])
+        self.instance.password = make_password(self.cleaned_data['password'])
         return super().save(self)
 
     def clean(self):

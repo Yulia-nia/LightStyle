@@ -22,6 +22,8 @@ from light_style import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', views.about),
+    path('shop/', include('shop.urls')),
+    path('comment/', include('comment.urls')),
     path('', include('users.urls')),
     path('', views.main)
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
