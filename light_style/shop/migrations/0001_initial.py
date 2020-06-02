@@ -57,7 +57,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('image', models.ImageField(upload_to='img')),
                 ('create_at', models.DateTimeField(auto_now_add=True)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='photos', to='shop.Product')),
+                ('products', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='photos', to='shop.Product')),
             ],
             options={
                 'verbose_name': 'Фотография',
