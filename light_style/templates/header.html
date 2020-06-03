@@ -1,20 +1,5 @@
 {% load static %}
 
-
-{% block link %}
-    <link
-            rel="icon"
-            href="{% static 'img/iconname.ico' %}"
-            type="image/x-icon"
-    >
-    <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link
-            href="https://fonts.googleapis.com/css?family=Osward|Roboto&display"
-            rel="stylesheet"
-    >
-{% endblock %}
-
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
 
         <div class="container">
@@ -25,7 +10,9 @@
                 <ul class="navbar-nav mr-auto">
 
                     {% if user.is_authenticated %}
-
+                        <li class="nav-item">
+                            <a class="nav-link">{{ user.username | striptags | lower | capfirst }}</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Выход</a>
                         </li>

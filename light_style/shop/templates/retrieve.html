@@ -1,0 +1,49 @@
+</body>{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+{% block link %}
+
+<link
+            rel="stylesheet"
+            href="{% static 'css/styles.css' %}"
+            type="text/css"
+    >
+   <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block app %}
+    <div class="container pt-4 pb-5">
+        <div class="row align-items-center mt-5">
+            <div class="col-12 name-ad mb-5">
+                <h2 class="blog-post-title"> {{ product.name }}</h2>
+                <p class="created-at mb-1">{{ product.created|date:"d.m.Y" }} {{ product.created|time:"H:i" }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 mb-5">
+                <h4 class="features">Характеристики</h4>
+                <p class="feature mt-4">Производитель: {{ product.manufacturer }}</p>
+                <p class="feature">Кол-во ламп: {{ product.number_of_lamps }}</p>
+                <p class="feature">Мощность: {{ product.power }}</p>
+                <p class="feature">Ширина:  {{ product.width }}</p>
+                <p class="feature">Высота: {{ product.height }}</p>
+                <p class="feature">Материал арматуры: : {{ product.reinforcement_material}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col align-items-center">
+            <h4 class="features">Описание</h4>
+                <p class="feature">{{ product.description }}</p>
+            </div>
+        </div>
+    </div>
+   </div>
+
+{% endblock %}

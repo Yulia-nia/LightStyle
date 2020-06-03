@@ -7,6 +7,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = '__all__'
         #fields = ('title', 'author', 'body')
-        exclude = ['expires_at', '']
+        exclude = ['expires_at']
 
 

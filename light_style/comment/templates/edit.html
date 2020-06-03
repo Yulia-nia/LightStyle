@@ -3,10 +3,15 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Register
+    Отзывы
 {% endblock %}
 
 {% block link %}
+        <link
+            rel="stylesheet"
+            href="{% static 'css/form_styles.css' %}"
+            type="text/css"
+    >
 <link
             rel="stylesheet"
             href="{% static 'css/styles.css' %}"
@@ -17,12 +22,11 @@
 
 {% block app %}
    <div class="card form container py-5 col-md-6 themed-grid-col rounded">
-        <h4>Регистрация</h4>
-          <form method="post" action="/register/">
+        <h4>Добавьте совой отзыв</h4>
+          <form method="post" action="/comments/create/" class="post-form">
               {% csrf_token %}
-
-                  {{ form|crispy }}
-
+               {{ form|crispy }}
+              <input type="datetime-local" name="expires_at">
               <input type="submit" placeholder="Отправить">
           </form>
    </div>

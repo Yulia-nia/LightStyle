@@ -1,11 +1,15 @@
 import datetime
 import json
 import os
+from io import BytesIO
+
 from django.core.management import BaseCommand
 from django.conf import settings
 from django.utils import timezone
 from shop.models import Product
 from PIL import Image
+from django.core.files.base import ContentFile
+
 
 PRODUCT_DIR = os.path.join(
     settings.BASE_DIR,
@@ -40,13 +44,6 @@ class Command(BaseCommand):
                 data = json.load(f)
                 txt = data['name']
                 image = None
-                if data['image']:
-                    image_name = data['image']
-                    im = Image.open(
-                        os.path.join(IMG_DIR, image_name)
-                    )
-                    im.thumbnail((220, 130), Image.ANTIALIAS)
-                    im.save(im.filename, quality=60)
 
                 product = Product.objects.create(
                     name=txt,
@@ -64,3 +61,16 @@ class Command(BaseCommand):
                     number_of_lamps=data['number_of_lamps'],
                     created=timezone.now()
                 )
+                '''if data['image']:
+                    image_name = data['image']
+                    im = Image.open(
+                        os.path.join(IMG_DIR, image_name)
+                    )
+                    thumb_to = BytesIO()
+                    im.thumbnail((220, 130), Image.ANTIALIAS)
+                    im.save(thumb_to, im.format, quality=60)
+
+                    product.image = im
+                    product.image.save(im.filename, ContentFile(thumb_to.getvalue()), save=False)
+                '''
+                product.save()

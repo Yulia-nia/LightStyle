@@ -3,5 +3,9 @@ from comment import views
 
 
 urlpatterns = [
-    path('create_comment/', views.create_comment),
+    path('', views.all),
+    path('create/', views.create),
+    path('delete/<int:id>/', views.delete),
+    path('<int:id>/', views.retrieve),
+    path('<int:id>/edit/', views.edit),
 ]

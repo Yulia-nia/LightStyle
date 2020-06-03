@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     Login
@@ -7,22 +8,19 @@
 
 {% block link %}
 
-<link
-            rel="stylesheet"
-            href="{% static 'css/styles.css' %}"
+<link rel="stylesheet"
+      href="{% static 'css/styles.css' %}"
             type="text/css"
     >
-   <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
-
 {% endblock %}
 
 
 {% block app %}
    <div class="card form container py-5 col-md-6 themed-grid-col rounded">
-        <h4>Регистрация</h4>
+        <h4>Авторизация</h4>
           <form method="post" action="/login/">
               {% csrf_token %}
-              {{ form }}
+                {{ form|crispy }}
               <input type="submit" placeholder="Отправить">
           </form>
    </div>
