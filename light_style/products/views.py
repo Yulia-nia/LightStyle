@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from shop.models import Product, Category
+from products.models import Product, Category
 
 
 def catalog(request):

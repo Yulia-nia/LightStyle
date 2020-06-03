@@ -22,7 +22,7 @@ from light_style import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', views.about),
-    path('shop/', include('shop.urls')),
+    path('products/', include('products.urls')),
     path('comments/', include('comment.urls')),
     path('', include('users.urls')),
     path('', views.main)

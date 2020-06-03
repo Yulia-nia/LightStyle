@@ -3,34 +3,29 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    Отзывы
+    Отзывы | Редактировать отзыв
 {% endblock %}
 
 {% block link %}
-        <link
+    <link
             rel="stylesheet"
             href="{% static 'css/form_styles.css' %}"
-            type="text/css"
-    >
-<link
+            type="text/css">
+    <link
             rel="stylesheet"
             href="{% static 'css/styles.css' %}"
-            type="text/css"
-    >
+            type="text/css">
 {% endblock %}
 
 
 {% block app %}
    <div class="card form container py-5 col-md-6 themed-grid-col rounded">
-        <h4>Добавьте совой отзыв</h4>
-          <form method="post" action="/comments/create/" class="post-form">
+        <h4>Измените совой отзыв</h4>
+          <form method="post" action="/comments/create/" enctype="multipart/form-data" class="post-form">
               {% csrf_token %}
                {{ form|crispy }}
               <input type="datetime-local" name="expires_at">
-              <input type="submit" placeholder="Отправить">
+              <input type="submit" placeholder="Изменить">
           </form>
    </div>
-
-
-
 {% endblock %}

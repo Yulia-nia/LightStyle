@@ -4,40 +4,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>
         {% block title %}
             Light Style
         {% endblock %}
     </title>
-    {% block link %}
-    <link
-            rel="icon"
-            href="{% static 'img/iconname.ico' %}"
-            type="image/x-icon"
-    >
-    {% endblock %}
-    <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link
-            href="https://fonts.googleapis.com/css?family=Osward|Roboto&display"
-            rel="stylesheet"
-    >
+    {% block link %}
+        <link
+                rel="icon"
+                href="{% static 'img/iconname.ico' %}"
+                type="image/x-icon"
+        >
+    {% endblock %}
+        <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link
+                href="https://fonts.googleapis.com/css?family=Osward|Roboto&display"
+                rel="stylesheet"
+        >
 </head>
 <body>
 
-
-  {% include 'header.html' with user=user%}
+  {% include 'header.html' with user=user %}
 
     <div class="nav-scroller mb-2 container">
         <nav class="nav d-flex justify-content-between">
             <a class="p-2 text-muted" href="/">Главная</a>
-            <a class="p-2 text-muted" href="/shop/catalog">Каталог</a>
+            <a class="p-2 text-muted" href="/products/catalog">Каталог</a>
             <a class="p-2 text-muted" href="/comments">Отзывы</a>
             <a class="p-2 text-muted" href="/about">О магазине</a>
         </nav>
     </div>
     <hr>
-
 
     {% block app %}
     <main class="container" id="app">
@@ -53,7 +53,6 @@
          </div>
     {% endblock %}
 
-
     <hr>
         <footer class=" footer mt-auto py-3">
         <div class="center">
@@ -63,14 +62,15 @@
                 <ul class="list-unstyled text-small">
                     <li> <a rel="noopener noreferrer"
                             target="_blank"
-                            href="https://www.odnoklassniki.ru/group/52479738445918?from=footer">Одн</a>
+                            href="https://ok.ru/svetotochk/topics">Одноклассники</a>
                     </li>
                      <li> <a rel="noopener noreferrer"
                             target="_blank"
-                            href="https://www.odnoklassniki.ru/group/52479738445918?from=footer">Instagram</a>
+                            href="https://www.instagram.com/svetotochka_grodno/">Instagram</a>
                     </li>
                 </ul>
             </div>
+
             <div class="col-6 col-md">
                 <h5>Контакты</h5>
                 <ul class="list-unstyled text-small">
@@ -79,12 +79,13 @@
                     <li> +375-152-75-20-96 </li>
                 </ul>
             </div>
+
             <div class="col-6 col-md text-s">
                 <h5>Способы оплаты</h5>
                  Наличными или банковской картой, через систему АИС
-                "<a href="/about/oferta/#a6.9" target="_blank">Расчет</a>" (ЕРИП),
+                "<a href="https://www.raschet.by/" target="_blank">Расчет</a>" (ЕРИП),
                 онлайн банковской картой через систему
-                <a target="_blank" href="/bepaid/">bePaid</a>.
+                <a target="_blank" href="https://bepaid.by/">bePaid</a>.
             </div>
         </div>
         </div>

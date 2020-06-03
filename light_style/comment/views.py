@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 
@@ -9,12 +10,14 @@ def create(request):
     if request.method == 'GET':
         form = CommentForm()
     elif request.method == 'POST':
-        form = CommentForm(request.POST)
+        form = CommentForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            #poll = form.save()
-            #poll.image = Pillow(request.FILES['image'])
-            return redirect("/comments")
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.created = timezone.now()
+            comment.save()
+            return render(request, 'create_success.html')
+            #return redirect("/create_success.html")
     return render(request, 'create.html', context={
         'form': form})
 
@@ -39,15 +42,15 @@ def delete(request, id=None):
 
 
 def edit(request, id=None):
-    post = get_object_or_404(Comment, pk=id)
+    comment = get_object_or_404(Comment, pk=id)
     if request.method == "POST":
-        form = CommentForm(request.POST, instance=post)
+        form = CommentForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.published_date = timezone.now()
+            comment.save()
             return redirect('/comments')
     else:
-        form = CommentForm(instance=post)
+        form = CommentForm(instance=comment)
     return render(request, 'edit.html', {'form': form})

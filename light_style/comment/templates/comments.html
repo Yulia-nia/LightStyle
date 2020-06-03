@@ -7,47 +7,72 @@
 
 
 {% block app %}
-  <div class="container pt-1">
-
-  <div class="my-1 text-center new-ad">
-    <div class="card-body">
-      <h2 class="m-0 mt-4">Все отзывы</h2>
-    </div>
-  </div>
-
-
-
-        <a class="btn btn-default" href="/comments/create/">Publish</a>
-
-
-
-  <div class="row">
-    {% for comment in comments %}
-
-      <div class="col-md-4 mb-5">
- <a class="btn btn-default"
-                     href="/comments/{{ comment.id }}/edit/">
-          <div class="card h-100">
-
-              <a class="btn btn-default" href="/comments/delete/{{ comment.id }}/"><p>Delete</p><span class="glyphicon glyphicon-remove"></span></a>
-            <div class="card-body d-flex flex-column">
-              <div class="mt-auto">
-
-
-                      <h5 class="card-title">{{ comment.title }}</h5>
-
-                  <h6 class="feature">Дата: {{ comment.created }}</h6>
-                <h6 class="feature">Пользователь: {{ comment.author }}</h6>
-                <h6 class="feature">Текст: {{ comment.body }}</h6>
-              </div> </a>
+    <div class="container pt-1">
+        <div class="my-1 text-center new-ad">
+            <div class="card-body">
+                <h2 class="m-0 mt-4">Все отзывы</h2>
             </div>
-          </div>
+            <div class="card-body">
+                <a href="/comments/create/"><button class="btn btn-sm btn-outline-secondary">Добавить отзыв</button></a>
+            </div>
 
-      </div>
-    {% endfor %}
-    <button >
+        </div>
 
-    </button>
-</div>
-  </div>
+
+        <div class="row">
+            {% for comment in comments %}
+
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <a class="btn btn-default" href="/comments/{{ comment.id }}/">
+                            <h4 class="card-title">{{ comment.title }}</h4>
+                        </a>
+                        <h6 class="feature">Пользователь: {{ comment.author }}</h6>
+                        <p  class="card-text">Текст: {{ comment.body | truncatechars:60 }}</p>
+
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a href="/comments/{{ comment.id }}/delete/">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Удалить</button>
+                                </a>
+                                <a href="/comments/{{ comment.id }}/edit/" >
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Изменить</button>
+                                </a>
+                            </div>
+                            <small class="text-muted">{{ comment.created }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+            <!--<div class="col-md-4 mb-5">
+
+                            <a class="btn btn-default" href="/comments/{{ comment.id }}/delete/"><p> Удалить</p></a>
+                         </div>
+                         <div class="col-md-2">
+                            <a class="btn btn-default" href="/comments/{{ comment.id }}/edit/" ><p> Изменить</p></a>
+                         </div>
+                    </div>
+<a class="btn btn-default"
+                   href="/comments/{{ comment.id }}/">
+                        <div class="card-body d-flex flex-column">
+                            <div class="mt-auto">
+                                <h4 class="card-title">{{ comment.title }}</h4>
+                                <h6 class="feature">Дата: {{ comment.created }}</h6>
+                                <h6 class="feature">Пользователь: {{ comment.author }}</h6>
+                                <h6 class="feature">Текст: {{ comment.body | truncatechars:60 }}</h6>
+                            </div>
+                        </div> </a>
+                    </div>
+
+            </div>
+
+        </div> -->
+    </div>
+    </div>
 {% endblock %}

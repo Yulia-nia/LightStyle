@@ -7,26 +7,19 @@
 {% endblock %}
 
 {% block link %}
-<link
+    <link
             rel="stylesheet"
             href="{% static 'css/styles.css' %}"
-            type="text/css"
-    >
+            type="text/css">
 {% endblock %}
-
 
 {% block app %}
    <div class="card form container py-5 col-md-6 themed-grid-col rounded">
         <h4>Регистрация</h4>
           <form method="post" action="/register/">
               {% csrf_token %}
-
-                  {{ form|crispy }}
-
+              {{ form|crispy }}
               <input type="submit" placeholder="Отправить">
           </form>
    </div>
-
-
-
 {% endblock %}

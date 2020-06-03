@@ -1,8 +1,6 @@
 from django.core.exceptions import NON_FIELD_ERRORS
 from django.http import Http404
 from django.shortcuts import render, redirect
-
-from users.models import User
 from users.forms import RegistrationForm, LoginForm
 from django.contrib.auth import login, authenticate, logout
 
@@ -20,7 +18,6 @@ def register(request):
             user = form.save()
             user.send_verification_email()
             login(request, user)
-
             return render(request, 'register_success.html')
         else:
             return render(request, 'register.html', context={"form": form})
