@@ -4,6 +4,26 @@ from django.views.decorators.http import require_GET
 
 from products.models import Product, Category
 
+
+def product(request, product_id):
+    product = Product.objects.get(id=product_id)
+    session_key = request.session.session_key
+    if not session_key:
+        request.session.cycle_key()
+    print(request.session.session_key)
+    return render(request, 'products/retrieve.html', locals())
+
+
+'''def product_detail(request, id, slug):
+    product = get_object_or_404(Product,
+                                id=id,
+                                slug=slug,
+                                available=True)
+    cart_product_form = CartAddProductForm()
+    return render(request, '/products/retrieve.html', {'product': product,
+                                                        'cart_product_form': cart_product_form})
+'''
+
 @require_GET
 def catalog(request, category_slug=None):
     query = request.GET.get('q', '')

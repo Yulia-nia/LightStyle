@@ -18,9 +18,12 @@
             <div class="mt-auto mb-5">
                 <h5 class="feature">Текст: <h6>{{ comment.body }}</h6></h5>
             </div>
+
+            {% if comment.image %}
             <div class="card mt-auto">
-                <img scr="{{ comment.image.url }}" class="article-img">
+                <img scr="{{ comment.image.url }}">
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

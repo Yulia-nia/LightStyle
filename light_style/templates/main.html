@@ -4,7 +4,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
     <title>
         {% block title %}
             Light Style
@@ -12,22 +11,19 @@
     </title>
 
     {% block link %}
-        <link
-                rel="icon"
-                href="{% static 'img/iconname.ico' %}"
-                type="image/x-icon"
-        >
+        <link rel="icon"
+              href="{% static 'img/iconname.ico' %}"
+              type="image/x-icon">
     {% endblock %}
-        <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        <link
-                href="https://fonts.googleapis.com/css?family=Osward|Roboto&display"
-                rel="stylesheet"
-        >
+    <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Osward|Roboto&display" rel="stylesheet">
+
 </head>
 <body>
 
-  {% include 'header.html' with user=user %}
+    {% include 'header.html' with user=user %}
 
     <div class="nav-scroller mb-2 container">
         <nav class="nav d-flex justify-content-between">
@@ -40,56 +36,65 @@
     <hr>
 
     {% block app %}
-    <main class="container" id="app">
-         <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-             <div  class="col-md-6 px-0">
-                 <h1 class="display-4 font-italic">Стиль света</h1>
-                 <p class="lead my-3">
-                     Магазин качественных светильников предлагает покупателям широкий ассортимент
-                     подвесных, напольных, потолочных, настенных и точечных встаиваемых светильников.
-                 </p>
-                 <p class="lead mb-0"><a href="/about" class="text-white font-weight-bold">Читать дальше...</a></p>
+        <main class="container" id="app">
+             <div class="jumbotron p-4 p-md-5 text-white rounded bg-info">
+                 <div  class="col-md-6 px-0">
+                     <h1 class="display-4 font-italic">Стиль света</h1>
+                     <p class="lead my-3 text-white">
+                         Магазин качественных светильников предлагает покупателям широкий ассортимент
+                         подвесных, напольных, потолочных, настенных и точечных встаиваемых светильников.
+                     </p>
+                     <p class="lead mb-0"><a href="/about" class="text-white font-weight-bold">Читать дальше...</a></p>
+                 </div>
              </div>
-         </div>
+        </main>
     {% endblock %}
 
-    <hr>
+        <hr>
         <footer class=" footer mt-auto py-3">
-        <div class="center">
-        <div class="row">
-            <div class="col-6 col-md">
-                <h5>Мы в сотсетях</h5>
-                <ul class="list-unstyled text-small">
-                    <li> <a rel="noopener noreferrer"
-                            target="_blank"
-                            href="https://ok.ru/svetotochk/topics">Одноклассники</a>
-                    </li>
-                     <li> <a rel="noopener noreferrer"
-                            target="_blank"
-                            href="https://www.instagram.com/svetotochka_grodno/">Instagram</a>
-                    </li>
-                </ul>
-            </div>
+            <div class="center">
+                <div class="row">
+                    <div class="col-6 col-md">
+                        <h5>Мы в сотсетях</h5>
+                        <ul class="list-unstyled text-small">
+                            <li>
+                                <a rel="noopener noreferrer"
+                                target="_blank"
+                                href="https://ok.ru/svetotochk/topics">Одноклассники</a>
+                            </li>
+                            <li>
+                                <a rel="noopener noreferrer"
+                                target="_blank"
+                                href="https://www.instagram.com/svetotochka_grodno/">Instagram</a>
+                            </li>
+                        </ul>
+                    </div>
 
-            <div class="col-6 col-md">
-                <h5>Контакты</h5>
-                <ul class="list-unstyled text-small">
-                    <li> +375-33-392-01-79 </li>
-                    <li> +375-152-75-20-98 </li>
-                    <li> +375-152-75-20-96 </li>
-                </ul>
-            </div>
+                    <div class="col-6 col-md">
+                        <h5>Контакты</h5>
+                        <ul class="list-unstyled text-small">
+                            <li> +375-33-392-01-79 </li>
+                            <li> +375-152-75-20-98 </li>
+                            <li> +375-152-75-20-96 </li>
+                        </ul>
+                    </div>
 
-            <div class="col-6 col-md text-s">
-                <h5>Способы оплаты</h5>
-                 Наличными или банковской картой, через систему АИС
-                "<a href="https://www.raschet.by/" target="_blank">Расчет</a>" (ЕРИП),
-                онлайн банковской картой через систему
-                <a target="_blank" href="https://bepaid.by/">bePaid</a>.
+                    <div class="col-6 col-md text-s">
+                        <h5>Способы оплаты</h5>
+                         Наличными или банковской картой, через систему АИС
+                        "<a href="https://www.raschet.by/" target="_blank">Расчет</a>" (ЕРИП),
+                        онлайн банковской картой через систему
+                        <a target="_blank" href="https://bepaid.by/">bePaid</a>.
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
         </footer>
-     </main>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
 </body>
 </html>

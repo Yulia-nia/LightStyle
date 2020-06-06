@@ -8,7 +8,6 @@ class Comment(models.Model):
     author = models.ForeignKey(User, related_name='author', on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='img', null=True)
 
     class Meta:
         ordering = ('created',)

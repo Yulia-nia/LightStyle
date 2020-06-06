@@ -7,30 +7,23 @@
 {% endblock %}
 
 {% block link %}
-        <link
-            rel="stylesheet"
-            href="{% static 'css/form_styles.css' %}"
-            type="text/css"
-    >
-<link
-            rel="stylesheet"
-            href="{% static 'css/styles.css' %}"
-            type="text/css"
-    >
+    <link rel="stylesheet"
+          href="{% static 'css/form_styles.css' %}"
+          type="text/css">
+    <link rel="stylesheet"
+          href="{% static 'css/styles.css' %}"
+          type="text/css">
 {% endblock %}
 
 
 {% block app %}
    <div class="card form container py-5 col-md-6 themed-grid-col rounded">
-        <h4>Добавьте совой отзыв</h4>
-          <form method="post" action="/comments/create/" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ form|crispy }}
-              <input type="datetime-local" name="expires_at">
-              <input type="submit" placeholder="Отправить">
-          </form>
+       <h4>Добавьте совой отзыв</h4>
+       <form method="post" action="/comments/create/" enctype="multipart/form-data">
+           {% csrf_token %}
+           {{ form|crispy }}
+           <input type="datetime-local" name="expires_at">
+           <input type="submit" placeholder="Отправить">
+       </form>
    </div>
-
-
-
 {% endblock %}

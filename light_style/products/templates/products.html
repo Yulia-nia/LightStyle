@@ -6,50 +6,59 @@
 {% endblock %}
 
 {% block link %}
-    <link rel="stylesheet"
-          href="{% static 'css/styles.css' %}"
-          type="text/css">
-   <link href="https://bootstrap-4.ru/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+
 {% endblock %}
 
 {% block app %}
-
-    <div class="row mb-3">
+   <div class="row mb-3">
         <div class="col-md-8 themed-grid-col">
-
             <div class="container">
-             {% for product in products %}
-            <div class="row">
-                <div class="col-md-10">
-                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
-                            <strong class="d-inline-block mb-2 text-primary">{{ product.category }}</strong>
-                            <a id="{{ product.category.name }}"><h4 class="mb-0">{{ product.name }}</h4></a>
-                            <div class="mb-1 text-muted">{{ product.created }}</div>
-                            <p class="card-text mb-auto">{{ product.description | truncatechars:60}}</p>
-                            <h4 class="mb-0">Цена: {{ product.price }} руб.</h4>
-                            <a href="/products/catalog/{{ product.id }}/" class="stretched-link">Continue reading</a>
-                        </div>
-                        <div class="col-auto d-none d-lg-block">
-                            <img scr="{{ product.image.url }}"/>
 
+            <div class="section section3 laptops-container">
+                    <div class="container">
+                        <div class="row">
+
+                {% for product in products %}
+
+                    <div class="col-lg-3">
+                        <div class="product-item">
+                            <div>
+                                 <a id="{{ product.category.name }}"><img src="{{ product.image.url }}" class="card-img-top car-pic">
+                                 </a></div>
+
+                           <h5>{{ product.name }}</h5>
+                            <strong class="d-inline-block mb-2 text-primary">
+                                <h6>{{ product.category }}</h6></strong>
+
+                            <div>
+                                {{ product.price }} руб.
+                                <a href="/products/catalog/{{ product.id }}/" class="stretched-link"> </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-             {% endfor %}
+        </div>
+    </div>
+
+
+
             </div>
+        </div>
 
-                 </div>
 
-        <div class="col-md-4 themed-grid-col">
+
+
+        <div class="col-md-4 ">
             <div class="card" id="sidebar">
                 <h3>Категории</h3>
                 <ul>
                     {% for c in categories %}
-                    <li {% if category.slug == c.slug %}class="selected"{% endif %}>
-                        <a href="#{{ c.name }}">{{ c.name }}</a>
-                    </li>
+                        <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                            <a class="text-info" href="#{{ c.name }}">{{ c.name }}</a>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>

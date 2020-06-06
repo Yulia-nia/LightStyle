@@ -17,7 +17,6 @@ def create(request):
             comment.created = timezone.now()
             comment.save()
             return render(request, 'create_success.html')
-            #return redirect("/create_success.html")
     return render(request, 'create.html', context={
         'form': form})
 

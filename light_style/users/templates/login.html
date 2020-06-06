@@ -15,12 +15,12 @@
 
 {% block app %}
    <div class="card form container py-5 col-md-6 themed-grid-col rounded">
-        <h4>Авторизация</h4>
-          <form method="post" action="/login/">
-              {% csrf_token %}
-                {{ form|crispy }}
-              <input type="submit" placeholder="Отправить">
-          </form>
+       <h4>Авторизация</h4>
+       <form method="post" action="/login/">
+           {% csrf_token %}
+           {{ form|crispy }}
+           <input type="submit" placeholder="Отправить">
+       </form>
    </div>
 
 {% endblock %}

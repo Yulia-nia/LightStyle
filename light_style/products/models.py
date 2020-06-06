@@ -21,7 +21,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True)
     image = models.ImageField(upload_to='img')
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.FloatField()
     description = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -40,4 +40,3 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
-
